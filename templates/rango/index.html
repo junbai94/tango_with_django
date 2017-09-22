@@ -1,0 +1,39 @@
+
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Rango</title>
+	</head>
+	
+	<body>
+		<h1>
+			This is index page
+		</h1><br>
+        
+        <h3>Top viewed category</h3>
+		<ul>
+			{% if categories %}
+				{% for cat in categories %}
+					<li><a href="{% url 'category' cat.slug %}">{{cat.name}}</a></li>
+				{% endfor %}
+			{% else %}
+				<strong>There is no instance in Category database</strong>
+			{% endif %}
+		</ul><br>
+        
+        <h3>Top 5 viewed pages</h3>
+        <ul>
+            {% if pages %}
+                {% for page in pages %}
+                    <li><a href="{{page.url}}">{{page.title}}</a></li>
+                {% endfor %}
+            {% else %}
+                <strong>No single page exit
+            {% endif %}
+        </ul><br>
+        
+        <a href="{% url 'add_category' %}">Add a new category</a><br />
+        <a href="{% url 'about' %}">About</a><br />
+        
+	</body>
+</html>
